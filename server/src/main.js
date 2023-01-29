@@ -34,6 +34,10 @@ router.render = (req, res) => {
 
 server.use('/api', router);
 
+server.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
+
 server.listen(port, () => {
   if (process.env.VITE_APP_NODE_ENV === 'production') {
     console.log(`App running at \x1b[36m${process.env.VITE_APP_SERVER_URL}\x1b[0m`);
