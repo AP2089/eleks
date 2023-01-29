@@ -1,0 +1,15 @@
+.heading-base {
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 15px 0;
+  padding: 0;
+
+  @include media('min', $viewport-post-md) {
+    font-size: 32px;
+  }
+  
+  @include media('max', $viewport-md) {
+    font-size: 26px;
+  }
+}

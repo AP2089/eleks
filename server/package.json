@@ -1,0 +1,16 @@
+{
+  "name": "eleks",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "dotenv -e ../.env.production node ./src/main.js",
+    "serve": "dotenv -e ../.env.development nodemon ./src/main.js"
+  },
+  "dependencies": {
+    "dotenv-cli": "^6.0.0",
+    "json-server": "^0.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
