@@ -1,15 +1,16 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import axios from '@/axios';
+import translations from '@/translations';
 import useFeatchItems from '@/hooks/useFeatchItems';
 
 const useNotesStore = defineStore('notesStore', () => {
-  const { isLoading, error, limit, pageCount, totalCount, loading, unload, loaded, setOptions, setUrlParams } = useFeatchItems();
+  const { isLoading, error, pageCount, message, loading, unload, loaded, setOptions, setUrlParams, showMessage } = useFeatchItems();
   const title = ref('');
   const items = ref([]);
   const formName = ref('formNotes');
 
-  const dataFeatch = async (pageNumber = null) => {
+  const dataFeatch = async (pageNumber = null, message = null) => {
     try {
       loading();
 
@@ -28,6 +29,10 @@ const useNotesStore = defineStore('notesStore', () => {
       setOptions(data.meta, headers['x-total-count']);
       title.value = data.title;
       items.value = data.items;
+
+      if (message) {
+        showMessage(message);
+      }
     } catch (error) {
       unload(error);
     } finally {
@@ -41,7 +46,7 @@ const useNotesStore = defineStore('notesStore', () => {
       
       await axios.post('/notes', formData);
 
-      dataFeatch(1);
+      dataFeatch(1, translations.global.t('item.add'));
     } catch (error) {
       unload(error);
     } finally {
@@ -55,7 +60,7 @@ const useNotesStore = defineStore('notesStore', () => {
       
       await axios.delete(`/notes/${id}`);
 
-      dataFeatch(1);
+      dataFeatch(1, translations.global.t('item.remove'));
     } catch (error) {
       unload(error);
     } finally {
@@ -68,6 +73,7 @@ const useNotesStore = defineStore('notesStore', () => {
     items,
     formName,
     pageCount,
+    message,
     isLoading,
     error,
     itemAdd,

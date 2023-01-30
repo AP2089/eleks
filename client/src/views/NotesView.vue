@@ -5,6 +5,7 @@
       :items="notesStore.items"
       :paginationPageCount="notesStore.pageCount"
       :formName="notesStore.formName"
+      :message="notesStore.message"
       @paginationChange="notesStore.dataFeatch"
       @formSubmit="notesStore.itemAdd"
       @itemRemove="notesStore.itemRemove"

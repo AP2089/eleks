@@ -42,7 +42,7 @@ const props = defineProps({
   line-height: 1.2;
   cursor: pointer;
   outline: none;
-  padding: 10px 15px 9px 15px;
+  padding: 10px 15px;
   color: #FFFFFF;
   border: 1px solid $color-primary;
   transition: color .5s ease 0s, background-color .5s ease 0s;

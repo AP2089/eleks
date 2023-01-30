@@ -3,7 +3,7 @@ import useFeatchEvent from '@/hooks/useFeatchEvent';
 import useUrlParams from '@/hooks/useUrlParams';
 
 const useFeatchItems = () => {
-  const { isLoading, error, loading, unload, loaded, setMeta } = useFeatchEvent();
+  const { isLoading, error, message, loading, unload, loaded, setMeta, showMessage } = useFeatchEvent();
   const limit = ref(9);
   const totalCount = ref(0);
 
@@ -31,6 +31,7 @@ const useFeatchItems = () => {
   return {
     isLoading,
     error,
+    message,
     pageCount,
     totalCount,
     loading,
@@ -38,7 +39,8 @@ const useFeatchItems = () => {
     loaded,
     limit,
     setOptions,
-    setUrlParams
+    setUrlParams,
+    showMessage
   }
 }
 

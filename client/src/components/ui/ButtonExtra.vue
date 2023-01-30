@@ -55,7 +55,7 @@ const classes = computed(() => ([
   border-width: 1px;
   border-style: solid;
   outline: none;
-  padding: 7px 15px 6px 15px;
+  padding: 7px 15px;
   transition: color .5s ease 0s, background-color .5s ease 0s;
 
   &:hover {

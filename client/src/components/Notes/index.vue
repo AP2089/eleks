@@ -21,6 +21,11 @@
         @itemRemove="$emit('itemRemove', $event)"
       />
     </div>
+
+    <Notification
+      :text="message"
+      type="success"
+    />
   </div>
 </template>
 
@@ -37,6 +42,10 @@ const props = defineProps({
     required: true
   },
   formName: {
+    type: String,
+    required: true
+  },
+  message: {
     type: String,
     required: true
   },

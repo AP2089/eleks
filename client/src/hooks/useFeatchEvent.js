@@ -8,6 +8,7 @@ const useFeatchEvent = () => {
   const isLoading = ref(false);
   const isLoadingSearch = ref(false);
   const error = ref('');
+  const message = ref('');
 
   const loading = () => {
     isLoading.value = true;
@@ -24,7 +25,6 @@ const useFeatchEvent = () => {
       debounce(() => {
         error.value = '';
       }, messageClearTimeout);
-  
     }
   }
 
@@ -37,14 +37,24 @@ const useFeatchEvent = () => {
     useHead(meta);
   }
 
+  const showMessage = (text) => {
+    message.value = text;
+
+    debounce(() => {
+      message.value = '';
+    }, messageClearTimeout);
+  }
+
   return {
     isLoading,
     isLoadingSearch,
+    message,
     error,
     loading,
     unload,
     loaded,
-    setMeta
+    setMeta,
+    showMessage
   }
 }
 
